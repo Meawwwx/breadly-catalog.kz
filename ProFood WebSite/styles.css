@@ -1,0 +1,316 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+.site-name {
+    display: flex;
+    align-items: center;
+    gap: 0rem; /* reduce space between icon and text */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.site-icon {
+    width: 80px;      /* slightly smaller if needed */
+    height: 80px;
+    object-fit: contain;
+    display: block;   /* remove extra space under image */
+}
+
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f0fff0;
+}
+
+/* Header with rich croissant-inspired gradient */
+header {
+    overflow: hidden;
+    height: 50vh;
+    position: relative;
+    z-index: 1;
+    background: linear-gradient(-45deg,     #00FA9A 0%,    /* light lime green */
+                                #3CB371 50%,
+                                #228B22 66%, /* medium green */
+                                #2E8B57 100%   /* deep green */
+    );
+    background-size: 400% 400%;
+    animation: gradientBG 20s ease infinite;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+    height: 60px;
+    color: #f0fff0;
+    font-weight: bold;
+    font-size: 1rem;
+    z-index: 10; /* above the wave */
+    position: relative;
+}
+
+.site-name {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.nav-links a {
+    position: relative;
+    color: white;
+    text-decoration: none;
+    margin-left: 2rem;
+    font-weight: 600;
+    cursor: pointer;
+    padding-bottom: 4px; /* space for underline */
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #f0fff0;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    box-shadow: none;
+}
+
+.nav-links a:hover {
+    color: #ffffff;
+    text-shadow:
+    0 0 8px #ffffff,
+    0 0 12px #ffffff,
+    0 0 20px #ffffff;
+}
+
+.nav-links a:hover::after {
+    transform: scaleX(1);
+    box-shadow: 0 0 8px 2px #ffffff;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    opacity: 0;
+    animation: fadeInUp 1s ease forwards;
+}
+
+.fade-in.delay-1 {
+    animation-delay: 0.2s;
+}
+
+.fade-in.delay-2 {
+    animation-delay: 0.4s;
+}
+
+.fade-in.delay-3 {
+    animation-delay: 0.6s;
+}
+
+
+/* Wavy SVG at the bottom */
+.wave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    line-height: 0;
+}
+
+.wave svg {
+    display: block;
+    width: 100%;
+    height: 100px;
+}
+
+.motto {
+    position: absolute;
+    bottom: 100px; /* place it across the wave line */
+    width: 100%;
+    text-align: center;
+    font-size: 3.5rem; /* larger text */
+    font-weight: 800;
+    color: whitesmoke;
+    z-index: 2;
+    opacity: 0;
+    animation: fadeInUp 1s ease forwards;
+
+}
+
+
+.delay-4 {
+    animation-delay: 1s;
+}
+
+.croissants-section {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    display: flex;
+    justify-content: center; /* center content */
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.croissant-card {
+    background: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    width: 300px;
+    padding: 1rem;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #043927;
+    transition: transform 0.3s ease;
+}
+
+
+
+.croissant-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.croissant-image {
+    width: 100%;
+    height: 200px;
+    border-radius: 8px;
+    object-fit: cover;
+    margin-bottom: 1rem;
+}
+
+.croissant-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.croissant-description {
+    font-size: 1rem;
+    line-height: 1.4;
+}
+
+.croissant-image-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+.card-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: flex;
+    gap: 1rem;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 2;
+}
+
+.croissant-image {
+    transition: filter 0.3s ease;
+}
+
+.croissant-card:hover .croissant-image {
+    filter: blur(3px);
+}
+
+.croissant-card:hover .card-overlay {
+    opacity: 1;
+}
+
+/* Buttons */
+.overlay-btn {
+    width: 48px;
+    height: 48px;
+    background-color: white;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+}
+
+.overlay-btn img {
+    width: 24px;
+    height: 24px;
+}
+
+.overlay-btn:hover {
+    transform: scale(1.1);
+}
+
+footer {
+    background-color: #043927;
+    color: #f0fff0;
+    padding: 2rem 1rem;
+    margin-top: 3rem;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+.footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.footer-icon {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+.footer-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.footer-links a {
+    color: #f0fff0;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #00FA9A;
+}
+
+.footer-copy {
+    margin-top: 1rem;
+    width: 100%;
+    font-size: 0.9rem;
+    color: #c0f0c0;
+}
